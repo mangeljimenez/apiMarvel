@@ -1,4 +1,9 @@
 $(function () {
+	var template = '<div class="card">'+
+						'<div><img src=":img:" alt=":img:" class="card-img">'+
+							'<p class="card-name">:name:</p>'+
+						'</div>'+
+						'</div>';
 	$.ajax({
 		url:"http://gateway.marvel.com/v1/public/characters",
 		data:{
@@ -8,7 +13,15 @@ $(function () {
 		}
 	})
 	.done(function(response, textStaus){
-		debugger;
+		var personajes = response.data.results;
+		personajes.forEach(function(personaje){
+			var card = template
+				.replace(":name:",personaje.name)
+				.replace(":img:",personaje.thumbnail.path + '.' + personaje.thumbnail.extension);
+
+				$("#app-body").find(".cards")
+					.append($(card));
+		});
 	})
 	.fail(function(){
 		console.log("error")
