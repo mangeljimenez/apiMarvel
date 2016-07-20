@@ -7,9 +7,9 @@ $(function () {
 	$.ajax({
 		url:"http://gateway.marvel.com/v1/public/characters",
 		data:{
-			ts:1,
+			ts:-5,
 			apikey: "20e2658c242e5fb2ee8893832cd647a7",
-			hash: "fe75a381ca79b0376855fe39471deeaf"
+			hash: "49814734893fdafb6f50ef03f606da60"
 		}
 	})
 	.done(function(response, textStaus){
